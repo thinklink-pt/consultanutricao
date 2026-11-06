@@ -70,12 +70,26 @@ fbq('track', 'PageView');
   .hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 56px;
+    grid-template-areas:
+      "info form"
+      "conhecer form";
+    gap: 56px 56px;
     align-items: start;
   }
 
+  .hero-info { grid-area: info; }
+  .hero-form { grid-area: form; }
+  .hero-conhecer { grid-area: conhecer; }
+
   @media (max-width: 860px) {
-    .hero { grid-template-columns: 1fr; gap: 32px; }
+    .hero {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "info"
+        "form"
+        "conhecer";
+      gap: 32px;
+    }
     .container { padding: 32px 20px; }
   }
 
@@ -112,7 +126,6 @@ fbq('track', 'PageView');
 
   /* SECÇÃO CONHECER */
   .conhecer {
-    margin-top: 40px;
     padding-top: 32px;
     border-top: 1px solid #ebe9e3;
     display: grid;
@@ -122,7 +135,7 @@ fbq('track', 'PageView');
   }
 
   @media (max-width: 860px) {
-    .conhecer { grid-template-columns: 1fr; }
+    .conhecer { grid-template-columns: 1fr; padding-top: 24px; }
   }
 
   .conhecer img {
@@ -563,25 +576,25 @@ fbq('track', 'PageView');
   <div class="container">
     <div class="hero">
 
-      <!-- Coluna esquerda -->
-      <div>
+      <!-- Coluna info -->
+      <div class="hero-info">
         <span class="badge">Avaliação gratuita</span>
         <h1>Consulta de Nutrição com a Dra. Vânia</h1>
         <p class="subtitulo">Sem sermões, sem proibições, sem dietas malucas. Só uma avaliação honesta e um plano que cabe na sua vida.</p>
 
         <div class="dra-vania">
-          <img src="dra-vania-perfil.jpg" alt="Dra. Vânia">
+          <img src="dra-vania-perfil.jpg" alt="Dra. Vânia Teixeira">
           <div>
-            <div class="nome">Dra. Vânia</div>
+            <div class="nome">Dra. Vânia Teixeira</div>
             <div class="titulo">Nutricionista · Farmácia Araucária</div>
           </div>
         </div>
 
         <ul class="beneficios">
-          <li>Primeira avaliação <strong>gratuita</strong> e sem compromisso</li>
-          <li>Avaliação completa: composição corporal, hábitos e objetivos</li>
-          <li>Plano adaptado à sua rotina, gostos e estilo de vida</li>
-          <li>Acompanhamento próximo, na Farmácia Araucária, em Vila Real</li>
+          <li><span>Primeira avaliação <strong>gratuita</strong> e sem compromisso</span></li>
+          <li><span>Avaliação completa: composição corporal, hábitos e objetivos</span></li>
+          <li><span>Plano adaptado à sua rotina, gostos e estilo de vida</span></li>
+          <li><span>Acompanhamento próximo, na Farmácia Araucária, em Vila Real</span></li>
         </ul>
 
         <div class="como-funciona">
@@ -610,21 +623,13 @@ fbq('track', 'PageView');
             </div>
           </div>
         </div>
-
-        <div class="conhecer">
-          <img src="dra-vania-cozinha.jpg" alt="Dra. Vânia a preparar refeições">
-          <div>
-            <h3>Alimentação real, não teoria</h3>
-            <p>Comer bem não é passar fome nem contar calorias ao jantar. É aprender a fazer escolhas que encaixam na sua vida, na sua família e no que gosta de comer. É isso que acontece em consulta.</p>
-          </div>
-        </div>
       </div>
 
-      <!-- Coluna direita: formulário -->
-      <aside>
+      <!-- Coluna formulário -->
+      <aside class="hero-form">
         <div class="form-box">
-          <h2>Marque a sua avaliação</h2>
-          <p class="form-sub">A equipa entra em contacto para agendar.</p>
+          <h2>Deixe os seus dados</h2>
+          <p class="form-sub">A equipa entra em contacto, sem compromisso.</p>
 
           <form id="form-inscricao" action="https://formspree.io/f/xpppnggb" method="POST">
 
@@ -723,6 +728,17 @@ fbq('track', 'PageView');
           </form>
         </div>
       </aside>
+
+      <!-- Secção Conhecer (aparece depois do form no mobile, lado esquerdo em desktop) -->
+      <div class="hero-conhecer">
+        <div class="conhecer">
+          <img src="dra-vania-cozinha.jpg" alt="Dra. Vânia a preparar refeições">
+          <div>
+            <h3>Alimentação real, não teoria</h3>
+            <p>Comer bem não é passar fome nem contar calorias ao jantar. É aprender a fazer escolhas que encaixam na sua vida, na sua família e no que gosta de comer. É isso que acontece em consulta.</p>
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>
