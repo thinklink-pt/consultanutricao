@@ -743,6 +743,7 @@ fbq('track', 'PageView');
 
     // Disparar evento de conversão do Meta Pixel
     if (typeof fbq !== 'undefined') {
+      fbq('track', 'PageView');
       fbq('track', 'Lead');
     }
   }
@@ -770,8 +771,9 @@ fbq('track', 'PageView');
       });
 
       if (resposta.ok) {
-        // Redirecionar para /obrigado (URL muda, Meta Pixel regista)
-        window.history.pushState({}, '', '/obrigado');
+        // Redirecionar para obrigado (URL relativo mantém o path atual)
+        const basePath = window.location.pathname.replace(/\/[^\/]*$/, '/');
+        window.history.pushState({}, '', basePath + 'obrigado');
         mostrarObrigado();
       } else {
         throw new Error('Erro no envio');
