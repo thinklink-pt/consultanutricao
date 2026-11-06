@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consulta de Nutrição Gratuita | Farmácia Araucária</title>
+<meta name="description" content="Avaliação nutricional gratuita com a Dra. Vânia, na Farmácia Araucária. Marque a sua.">
+
+<!-- Meta Pixel Code (substituir PIXEL_ID pelo real) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'PIXEL_ID');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --verde: #7A9268;
+    --verde-escuro: #5a7148;
+    --verde-claro: #e8ede2;
+    --texto: #2c3220;
+    --cinza: #6b7362;
+    --branco: #ffffff;
+    --fundo: #faf9f6;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--texto);
+    background: var(--fundo);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--branco);
+    padding: 16px 24px;
+    border-bottom: 1px solid #ebe9e3;
+    text-align: center;
+  }
+  header .logo {
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--verde-escuro);
+    letter-spacing: 0.3px;
+  }
+
+  /* LAYOUT */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 24px;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; gap: 32px; }
+    .container { padding: 32px 20px; }
+  }
+
+  /* APRESENTAÇÃO DRA. VÂNIA */
+  .dra-vania {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 16px;
+    background: var(--verde-claro);
+    border-radius: 12px;
+    margin-bottom: 28px;
+  }
+
+  .dra-vania img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .dra-vania .nome {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--texto);
+    margin-bottom: 2px;
+  }
+
+  .dra-vania .titulo {
+    font-size: 13px;
+    color: var(--cinza);
+  }
+
+  /* SECÇÃO CONHECER */
+  .conhecer {
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid #ebe9e3;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 24px;
+    align-items: center;
+  }
+
+  @media (max-width: 860px) {
+    .conhecer { grid-template-columns: 1fr; }
+  }
+
+  .conhecer img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    aspect-ratio: 4/5;
+  }
+
+  .conhecer h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--texto);
+  }
+
+  .conhecer p {
+    font-size: 15px;
+    color: var(--cinza);
+    line-height: 1.6;
+  }
+
+  /* COLUNA ESQUERDA */
+  .badge {
+    display: inline-block;
+    background: var(--verde-claro);
+    color: var(--verde-escuro);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: var(--texto);
+  }
+
+  @media (max-width: 860px) {
+    h1 { font-size: 28px; }
+  }
+
+  .subtitulo {
+    font-size: 17px;
+    color: var(--cinza);
+    margin-bottom: 28px;
+    font-weight: 400;
+  }
+
+  .beneficios {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .beneficios li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 15px;
+    color: var(--texto);
+  }
+
+  .beneficios li::before {
+    content: "✓";
+    color: var(--verde);
+    font-weight: 700;
+    font-size: 18px;
+    flex-shrink: 0;
+    line-height: 1.3;
+  }
+
+  /* COMO FUNCIONA */
+  .como-funciona {
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid #ebe9e3;
+  }
+
+  .como-funciona h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--texto);
+  }
+
+  .passos {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .passo {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .passo .numero {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--verde);
+    color: var(--branco);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .passo strong {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 2px;
+    color: var(--texto);
+  }
+
+  .passo p {
+    font-size: 14px;
+    color: var(--cinza);
+    margin: 0;
+  }
+
+  /* FORMULÁRIO */
+  .form-box {
+    background: var(--branco);
+    border: 1px solid #ebe9e3;
+    border-radius: 16px;
+    padding: 32px;
+    position: sticky;
+    top: 24px;
+  }
+
+  @media (max-width: 860px) {
+    .form-box { position: static; padding: 24px; }
+  }
+
+  .form-box h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--texto);
+  }
+
+  .form-box .form-sub {
+    font-size: 14px;
+    color: var(--cinza);
+    margin-bottom: 24px;
+  }
+
+  .campo {
+    margin-bottom: 16px;
+  }
+
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--texto);
+  }
+
+  label .opcional {
+    color: var(--cinza);
+    font-weight: 400;
+    font-size: 12px;
+  }
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid #d9d6cd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    background: var(--branco);
+    color: var(--texto);
+    transition: border-color 0.15s;
+  }
+
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--verde);
+    box-shadow: 0 0 0 3px rgba(122, 146, 104, 0.12);
+  }
+
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border: 1px solid #d9d6cd;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.15s;
+  }
+
+  .checkbox-item:hover {
+    border-color: var(--verde);
+    background: #fafbf7;
+  }
+
+  .checkbox-item input[type="checkbox"] {
+    accent-color: var(--verde);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  .radio-group {
+    display: flex;
+    gap: 10px;
+  }
+
+  .radio-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid #d9d6cd;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.15s;
+  }
+
+  .radio-item:hover { border-color: var(--verde); background: #fafbf7; }
+
+  .radio-item input[type="radio"] {
+    accent-color: var(--verde);
+    cursor: pointer;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    background: var(--verde);
+    color: var(--branco);
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.15s;
+  }
+
+  button[type="submit"]:hover { background: var(--verde-escuro); }
+
+  button[type="submit"]:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .form-nota {
+    font-size: 12px;
+    color: var(--cinza);
+    margin-top: 14px;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* CONSENTIMENTO RGPD */
+  .consentimento {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 12px;
+    background: #fafbf7;
+    border-radius: 8px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+  }
+
+  .consentimento input[type="checkbox"] {
+    accent-color: var(--verde);
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .consentimento label {
+    font-size: 12px;
+    color: var(--cinza);
+    line-height: 1.5;
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
+  }
+
+  .consentimento label a {
+    color: var(--verde-escuro);
+    text-decoration: underline;
+  }
+
+  .consentimento-opcional {
+    background: var(--branco);
+    border: 1px dashed #d9d6cd;
+  }
+
+  .rgpd-details {
+    margin-top: 16px;
+    font-size: 11px;
+    color: var(--cinza);
+  }
+
+  .rgpd-details summary {
+    cursor: pointer;
+    color: var(--verde-escuro);
+    font-weight: 500;
+    padding: 4px 0;
+    user-select: none;
+  }
+
+  .rgpd-details summary:hover { text-decoration: underline; }
+
+  .rgpd-details .conteudo {
+    padding: 12px;
+    background: #fafbf7;
+    border-radius: 8px;
+    margin-top: 8px;
+    line-height: 1.6;
+  }
+
+  .rgpd-details .conteudo p {
+    margin-bottom: 8px;
+  }
+
+  .rgpd-details .conteudo p:last-child { margin-bottom: 0; }
+
+  .rgpd-details .conteudo strong {
+    color: var(--texto);
+    font-weight: 600;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--branco);
+    border-top: 1px solid #ebe9e3;
+    padding: 28px 24px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--cinza);
+    margin-top: 48px;
+    line-height: 1.8;
+  }
+
+  footer strong { color: var(--texto); font-weight: 600; display: block; margin-bottom: 4px; font-size: 14px; }
+
+  footer a {
+    color: var(--verde-escuro);
+    text-decoration: none;
+    border-bottom: 1px solid var(--verde-claro);
+  }
+
+  footer a:hover { border-color: var(--verde-escuro); }
+
+  /* OBRIGADO */
+  .obrigado {
+    display: none;
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 80px 24px;
+  }
+
+  .obrigado.ativo { display: block; }
+
+  .landing.escondido { display: none; }
+
+  .obrigado-icon {
+    width: 72px;
+    height: 72px;
+    background: var(--verde-claro);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-size: 36px;
+    color: var(--verde-escuro);
+  }
+
+  .obrigado h1 {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  .obrigado p {
+    font-size: 16px;
+    color: var(--cinza);
+    margin-bottom: 12px;
+  }
+
+  .obrigado .contactos {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #ebe9e3;
+    font-size: 14px;
+  }
+
+  .obrigado .contactos strong {
+    color: var(--texto);
+    display: block;
+    margin-bottom: 6px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Farmácia Araucária</div>
+</header>
+
+<!-- LANDING -->
+<main class="landing" id="landing">
+  <div class="container">
+    <div class="hero">
+
+      <!-- Coluna esquerda -->
+      <div>
+        <span class="badge">Avaliação gratuita</span>
+        <h1>Consulta de Nutrição com a Dra. Vânia</h1>
+        <p class="subtitulo">Sem sermões, sem proibições, sem dietas malucas. Só uma avaliação honesta e um plano que cabe na sua vida.</p>
+
+        <div class="dra-vania">
+          <img src="dra-vania-perfil.jpg" alt="Dra. Vânia">
+          <div>
+            <div class="nome">Dra. Vânia</div>
+            <div class="titulo">Nutricionista · Farmácia Araucária</div>
+          </div>
+        </div>
+
+        <ul class="beneficios">
+          <li>Primeira avaliação <strong>gratuita</strong> e sem compromisso</li>
+          <li>Avaliação completa: composição corporal, hábitos e objetivos</li>
+          <li>Plano adaptado à sua rotina, gostos e estilo de vida</li>
+          <li>Acompanhamento próximo, na Farmácia Araucária, em Vila Real</li>
+        </ul>
+
+        <div class="como-funciona">
+          <h3>Como funciona</h3>
+          <div class="passos">
+            <div class="passo">
+              <span class="numero">1</span>
+              <div>
+                <strong>Preenche o formulário</strong>
+                <p>Com os seus dados e o que procura.</p>
+              </div>
+            </div>
+            <div class="passo">
+              <span class="numero">2</span>
+              <div>
+                <strong>A equipa entra em contacto</strong>
+                <p>Para agendar a consulta no horário que lhe der jeito.</p>
+              </div>
+            </div>
+            <div class="passo">
+              <span class="numero">3</span>
+              <div>
+                <strong>Avaliação gratuita com a Dra. Vânia</strong>
+                <p>Sem compromisso de seguir, sem taxa de marcação.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="conhecer">
+          <img src="dra-vania-cozinha.jpg" alt="Dra. Vânia a preparar refeições">
+          <div>
+            <h3>Alimentação real, não teoria</h3>
+            <p>Comer bem não é passar fome nem contar calorias ao jantar. É aprender a fazer escolhas que encaixam na sua vida, na sua família e no que gosta de comer. É isso que acontece em consulta.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coluna direita: formulário -->
+      <aside>
+        <div class="form-box">
+          <h2>Marque a sua avaliação</h2>
+          <p class="form-sub">A equipa entra em contacto para agendar.</p>
+
+          <form id="form-inscricao" action="https://formspree.io/f/xpppnggb" method="POST">
+
+            <div class="campo">
+              <label for="nome">Nome *</label>
+              <input type="text" id="nome" name="nome" required>
+            </div>
+
+            <div class="campo">
+              <label for="telemovel">Telemóvel *</label>
+              <input type="tel" id="telemovel" name="telemovel" required pattern="[0-9\s+]{9,}">
+            </div>
+
+            <div class="campo">
+              <label for="idade">Idade *</label>
+              <input type="number" id="idade" name="idade" min="12" max="110" required>
+            </div>
+
+            <div class="campo">
+              <label for="email">Email <span class="opcional">(opcional)</span></label>
+              <input type="email" id="email" name="email">
+            </div>
+
+            <div class="campo">
+              <label>Melhor horário para contacto <span class="opcional">(opcional)</span></label>
+              <div class="radio-group">
+                <label class="radio-item">
+                  <input type="radio" name="horario" value="Manhã"> Manhã
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="horario" value="Tarde"> Tarde
+                </label>
+              </div>
+            </div>
+
+            <div class="campo">
+              <label>Objetivo <span class="opcional">(opcional, pode selecionar vários)</span></label>
+              <div class="checkbox-group">
+                <label class="checkbox-item">
+                  <input type="checkbox" name="objetivo" value="Perder peso"> Perder peso
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="objetivo" value="Ganhar massa muscular"> Ganhar massa muscular
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="objetivo" value="Melhorar hábitos alimentares"> Melhorar hábitos alimentares
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="objetivo" value="Gestão de uma condição de saúde"> Gestão de uma condição de saúde
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="objetivo" value="Outro"> Outro
+                </label>
+              </div>
+            </div>
+
+            <div class="campo">
+              <label>Já foi a uma consulta de nutrição? <span class="opcional">(opcional)</span></label>
+              <div class="radio-group">
+                <label class="radio-item">
+                  <input type="radio" name="antes" value="Sim"> Sim
+                </label>
+                <label class="radio-item">
+                  <input type="radio" name="antes" value="Não"> Não
+                </label>
+              </div>
+            </div>
+
+            <div class="consentimento">
+              <input type="checkbox" id="consentimento" name="consentimento_consulta" required>
+              <label for="consentimento">
+                Autoriza a Farmácia Araucária a tratar os seus dados pessoais para efeitos de contacto e marcação da consulta de nutrição. *
+              </label>
+            </div>
+
+            <div class="consentimento consentimento-opcional">
+              <input type="checkbox" id="marketing" name="consentimento_marketing">
+              <label for="marketing">
+                Aceita receber, por email ou SMS, novidades, dicas de saúde e informação sobre campanhas e serviços da Farmácia Araucária. Pode cancelar a qualquer momento.
+              </label>
+            </div>
+
+            <button type="submit" id="submit-btn">Pedir avaliação gratuita</button>
+
+            <details class="rgpd-details">
+              <summary>Como tratamos os seus dados</summary>
+              <div class="conteudo">
+                <p><strong>Responsável pelo tratamento:</strong> Farmácia Araucária, Quinta da Araucária, Bloco 3, Loja 2, Vila Real.</p>
+                <p><strong>Finalidades:</strong> Os dados recolhidos são utilizados para (1) contacto e marcação da consulta de nutrição com a Dra. Vânia e, caso dê consentimento específico para o efeito, (2) envio de comunicações de marketing por email ou SMS sobre serviços, campanhas e dicas de saúde da Farmácia Araucária.</p>
+                <p><strong>Base legal:</strong> Consentimento do titular, nos termos do Regulamento Geral de Proteção de Dados (RGPD). O consentimento para marketing é separado e facultativo; a sua recusa não impede a marcação da consulta.</p>
+                <p><strong>Conservação:</strong> Os dados para marcação da consulta são conservados pelo período necessário ao agendamento e, caso a consulta se realize, pelo prazo legalmente exigido para o historial clínico. Os dados usados para marketing são conservados enquanto o consentimento se mantiver válido ou, no máximo, por 5 anos desde o último contacto.</p>
+                <p><strong>Partilha:</strong> Os dados não são partilhados com terceiros, exceto quando legalmente exigido ou com prestadores de serviços de envio de email/SMS sob contrato de subcontratação.</p>
+                <p><strong>Os seus direitos:</strong> A qualquer momento pode aceder, retificar, apagar ou solicitar a limitação do tratamento dos seus dados, opor-se ao tratamento ou retirar qualquer consentimento dado. Para o efeito, contacte 259 325 428 ou dirija-se à Farmácia Araucária. Em cada comunicação de marketing é também disponibilizada uma opção de cancelamento imediato.</p>
+              </div>
+            </details>
+          </form>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <footer>
+    <strong>Farmácia Araucária</strong>
+    Quinta da Araucária, Bloco 3, Loja 2 · Vila Real<br>
+    259 325 428 · <a href="https://maps.app.goo.gl/Pn9LRxkCZ8UwDv6S8" target="_blank" rel="noopener">Ver no mapa</a>
+  </footer>
+</main>
+
+<!-- PÁGINA OBRIGADO -->
+<section class="obrigado" id="obrigado">
+  <div class="obrigado-icon">✓</div>
+  <h1>Inscrição recebida!</h1>
+  <p>Obrigada pelo seu pedido de avaliação nutricional.</p>
+  <p>A nossa equipa entra em contacto nos próximos dias úteis para agendar a sua consulta com a Dra. Vânia, no horário que melhor se ajusta a si.</p>
+
+  <div class="contactos">
+    <strong>Quer antecipar o contacto?</strong>
+    Ligue para 259 325 428 ou <a href="https://maps.app.goo.gl/Pn9LRxkCZ8UwDv6S8" target="_blank" rel="noopener" style="color: var(--verde-escuro);">passe pela Farmácia Araucária</a>, em Vila Real.
+  </div>
+</section>
+
+<script>
+  // Routing simples: /obrigado ou #obrigado mostra página de obrigado
+  function mostrarObrigado() {
+    document.getElementById('landing').classList.add('escondido');
+    document.getElementById('obrigado').classList.add('ativo');
+    window.scrollTo(0, 0);
+
+    // Disparar evento de conversão do Meta Pixel
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'Lead');
+    }
+  }
+
+  // Ao carregar a página, verificar se URL contém obrigado
+  if (window.location.pathname.includes('obrigado') || window.location.hash === '#obrigado') {
+    mostrarObrigado();
+  }
+
+  // Submissão do formulário via AJAX para ficar na mesma página
+  const form = document.getElementById('form-inscricao');
+  const btn = document.getElementById('submit-btn');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'A enviar...';
+
+    try {
+      const dados = new FormData(form);
+      const resposta = await fetch(form.action, {
+        method: 'POST',
+        body: dados,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (resposta.ok) {
+        // Redirecionar para /obrigado (URL muda, Meta Pixel regista)
+        window.history.pushState({}, '', '/obrigado');
+        mostrarObrigado();
+      } else {
+        throw new Error('Erro no envio');
+      }
+    } catch (erro) {
+      btn.disabled = false;
+      btn.textContent = 'Pedir avaliação gratuita';
+      alert('Ocorreu um erro. Por favor, tente novamente ou ligue para 259 325 428.');
+    }
+  });
+</script>
+
+</body>
+</html>
