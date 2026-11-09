@@ -6,7 +6,7 @@
 <title>Consulta de Nutrição Gratuita | Farmácia Araucária</title>
 <meta name="description" content="Avaliação nutricional gratuita com a Dra. Vânia, na Farmácia Araucária. Marque a sua.">
 
-<!-- Meta Pixel Code (substituir PIXEL_ID pelo real) -->
+<!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -19,7 +19,10 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1445730874410322');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1445730874410322&ev=PageView&noscript=1"/></noscript>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1445730874410322&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -771,9 +774,13 @@ fbq('track', 'PageView');
       });
 
       if (resposta.ok) {
-        // Redirecionar para obrigado (URL relativo mantém o path atual)
-        const basePath = window.location.pathname.replace(/\/[^\/]*$/, '/');
-        window.history.pushState({}, '', basePath + 'obrigado');
+        // Construir URL absoluto para a página de obrigado, mantendo o path atual
+        let currentPath = window.location.pathname;
+        if (!currentPath.endsWith('/')) {
+          currentPath = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
+        }
+        const novoUrl = window.location.origin + currentPath + 'obrigado';
+        window.history.pushState({}, '', novoUrl);
         mostrarObrigado();
       } else {
         throw new Error('Erro no envio');
